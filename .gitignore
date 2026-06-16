@@ -1,0 +1,17 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+artifacts/
+playwright/.auth/
+.env
+*.log
+*.png
+*.pptx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/

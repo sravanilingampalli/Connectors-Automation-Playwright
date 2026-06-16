@@ -1,0 +1,44 @@
+{
+  "name": "connectors-automation",
+  "version": "1.0.0",
+  "description": "TypeScript Playwright test automation framework with HTML reporting",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "playwright test",
+    "test:ci": "playwright test",
+    "test:chromium": "playwright test --project=chromium-end-user",
+    "test:end-user": "playwright test --project=chromium-end-user",
+    "test:app-manager": "playwright test --project=chromium-app-manager",
+    "test:connectors": "playwright test --project=chromium-app-manager tests/e2e/connectors tests/smoke/es-connectors-admin-panel.smoke.spec.ts",
+    "test:connectors:smoke": "playwright test --project=chromium-app-manager tests/smoke/es-connectors-admin-panel.smoke.spec.ts",
+    "test:connectors:smoke:headed": "playwright test --project=chromium-app-manager tests/smoke/es-connectors-admin-panel.smoke.spec.ts --headed",
+    "test:connectors:regression": "playwright test --project=chromium-app-manager tests/regression/connectors",
+    "test:connectors:confluence": "playwright test --project=chromium-app-manager tests/e2e/connectors/es-connectors-confluence.spec.ts",
+    "test:connectors:e2e": "playwright test --project=chromium-app-manager tests/e2e/connectors",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:codegen": "playwright codegen",
+    "test:report": "playwright show-report playwright-report",
+    "report:clean": "node scripts/clean-report.js",
+    "install:browsers": "playwright install chromium"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "e2e",
+    "automation",
+    "connectors"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.3",
+    "dotenv": "^17.4.2",
+    "typescript": "^6.0.3"
+  }
+}

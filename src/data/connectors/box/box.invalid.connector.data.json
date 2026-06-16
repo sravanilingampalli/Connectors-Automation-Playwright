@@ -1,0 +1,6 @@
+{
+  "connectorName": "Box Invalid Format",
+  "clientId": "invalid-client-id ",
+  "clientSecret": "invalid-secret",
+  "enterpriseId": "invalid"
+}

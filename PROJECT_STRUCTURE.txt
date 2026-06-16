@@ -1,0 +1,78 @@
+Connecters_Automation_Playwright/
+│
+├── global-setup/
+│   └── global-setup.ts              # Runs once before all tests (login / auth)
+│
+├── global-teardown/
+│   └── global-teardown.ts           # Runs once after all tests
+│
+├── src/
+│   ├── config/
+│   │   ├── environment.ts           # local / staging / production settings
+│   │   └── users.ts                 # App Manager & End User credentials
+│   ├── constants/
+│   │   └── index.ts                 # App routes, timeouts, labels
+│   ├── data/
+│   │   ├── index.ts                 # Data exports
+│   │   ├── types/
+│   │   │   └── connector.types.ts   # Shared data interfaces
+│   │   ├── users/
+│   │   │   └── users.data.json      # User reference data
+│   │   └── connectors/
+│   │       └── dropbox/
+│   │           ├── dropbox.connector.data.json  # Static defaults
+│   │           ├── dropbox.connector.data.ts  # Env + JSON reader
+│   │           └── index.ts
+│   ├── fixtures/
+│   │   └── index.ts                 # Custom Playwright test fixtures
+│   ├── pages/
+│   │   ├── base.page.ts             # Base Page Object class
+│   │   ├── login.page.ts            # Login page object
+│   │   ├── index.ts                 # Page exports
+│   │   └── components/              # Reusable UI components (header, modal, etc.)
+│   └── utils/
+│       ├── auth.helper.ts           # Login & auth state helpers
+│       ├── logger.ts                # Logging utility
+│       └── helpers.ts               # Common helper functions
+│
+├── tests/
+│   ├── e2e/                         # End-to-end UI tests
+│   │   └── example.spec.ts
+│   ├── smoke/                       # Smoke / sanity tests
+│   └── regression/                  # Full regression suite
+│
+├── scripts/
+│   └── clean-report.js              # Clean playwright-report & test-results
+│
+├── playwright/
+│   └── .auth/
+│       ├── endUser.json             # End user session
+│       └── appManager.json          # App Manager session
+│
+├── playwright.config.ts             # Playwright configuration
+├── tsconfig.json                    # TypeScript configuration
+├── package.json                     # Dependencies & npm scripts
+├── .env.example                     # Environment variables template
+├── .env                             # Local environment (do not commit)
+└── .gitignore
+
+Generated at runtime (not committed):
+├── playwright-report/               # HTML report
+├── test-results/                    # Test failure screenshots, videos, traces
+├── artifacts/                       # Debug & manual screenshots
+│   ├── debug/                       # Exploration / debug captures
+│   └── screenshots/                 # Manual or custom screenshots
+└── node_modules/
+
+Screenshot locations:
+  - Test failures  → test-results/<test-name>/
+  - HTML report    → playwright-report/
+  - Debug/manual   → artifacts/debug/ or artifacts/screenshots/
+
+Path aliases (tsconfig):
+  @config/*     → src/config/*
+  @constants/*  → src/constants/*
+  @data/*       → src/data/*
+  @fixtures/*   → src/fixtures/*
+  @pages/*      → src/pages/*
+  @utils/*      → src/utils/*
