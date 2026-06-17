@@ -1,6 +1,6 @@
 # Connectors-Automation-Playwright
 
-End-to-end Playwright automation framework for Simpplr Enterprise Search Connectors.
+End-to-end Playwright automation for Simpplr Enterprise Search Connectors.
 
 ## Setup
 
@@ -17,15 +17,31 @@ Fill in credentials in `.env` (never commit `.env`).
 ```bash
 npm run test:connectors:smoke
 npm run test:connectors:e2e
+npm run test:connectors:confluence:all
 npm run test:app-manager
 ```
 
 ## Structure
 
-- `tests/` — smoke, e2e, regression specs
-- `src/pages/` — page objects
-- `src/data/` — test data (credentials via `.env` or local JSON)
-- `global-setup/` — role-based authentication
+```
+src/
+  core/                          # Shared config, helpers, base pages
+  modules/
+    es-connectors/
+      config/                    # Module configuration
+      constants/                 # UI labels, messages, tags
+      fixtures/                  # Playwright fixtures
+      helpers/                   # Module-specific helpers
+      test-data/                 # Connector test data (.env + JSON)
+      tests/
+        ui-tests/                # E2E UI specs (confluence, box, dropbox, smoke)
+        regression/              # Regression specs
+      ui/
+        pages/                   # Page objects
+        components/              # Reusable form components
+      playwright.es-connectors.config.ts
+global-setup/                    # Role-based authentication
+```
 
 ## Reports
 

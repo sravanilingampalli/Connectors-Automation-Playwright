@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "target": "ES2022",
     "module": "commonjs",
     "lib": ["ES2022"],
@@ -14,14 +15,16 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@config/*": ["src/config/*"],
-      "@constants/*": ["src/constants/*"],
-      "@data/*": ["src/data/*"],
-      "@fixtures/*": ["src/fixtures/*"],
-      "@pages/*": ["src/pages/*"],
-      "@utils/*": ["src/utils/*"]
+      "@core/*": ["./src/core/*"],
+      "@es-connectors/*": ["./src/modules/es-connectors/*"]
     }
   },
-  "include": ["src/**/*", "tests/**/*", "global-setup/**/*", "global-teardown/**/*", "playwright.config.ts"],
+  "include": [
+    "src/**/*",
+    "global-setup/**/*",
+    "global-teardown/**/*",
+    "playwright.config.ts",
+    "src/modules/es-connectors/playwright.es-connectors.config.ts"
+  ],
   "exclude": ["node_modules", "dist", "playwright-report", "test-results"]
 }

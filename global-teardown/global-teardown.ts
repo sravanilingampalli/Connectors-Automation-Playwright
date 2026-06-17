@@ -1,6 +1,6 @@
 import { FullConfig } from '@playwright/test';
 import path from 'path';
-import { logger } from '../src/utils/logger';
+import { logger } from '@core/utils/logger';
 
 async function globalTeardown(_config: FullConfig): Promise<void> {
   logger.info('Global teardown started');
