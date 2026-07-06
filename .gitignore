@@ -8,6 +8,8 @@ playwright/.auth/
 *.log
 *.png
 *.pptx
+src/modules/es-connectors/test-data/google-drive/google-drive.service-account.json
+src/modules/es-connectors/test-data/google-drive-2/google-drive-2.service-account.json
 
 # OS / editor
 .DS_Store

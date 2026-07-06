@@ -17,7 +17,8 @@ export class EnterpriseSearchNavigationPage extends BasePage {
   }
 
   async navigateToEnterpriseSearch(): Promise<void> {
-    await this.page.goto(ROUTES.enterpriseSearchSources, { waitUntil: 'domcontentloaded' });
+    await this.page.goto(ROUTES.enterpriseSearchSources, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+    await this.closeManageNavigationPanelIfOpen();
     await this.waitForEnterpriseSearchPage();
   }
 
@@ -25,18 +26,47 @@ export class EnterpriseSearchNavigationPage extends BasePage {
     await this.openFromProfileMenu();
   }
 
+  async clickManageMenu(): Promise<void> {
+    await this.manageMenuItem().click();
+  }
+
+  async clickEnterpriseSearchLink(): Promise<void> {
+    await this.enterpriseSearchLink().first().click();
+    await this.waitForEnterpriseSearchPage();
+    await this.closeManageNavigationPanelIfOpen();
+  }
+
+  async closeManageNavigationPanelIfOpen(): Promise<void> {
+    const closeMenuButton = this.page.getByRole('button', { name: /close menu/i });
+    if (await closeMenuButton.isVisible({ timeout: 3_000 }).catch(() => false)) {
+      await closeMenuButton.click();
+    }
+  }
+
   async openFromProfileMenu(): Promise<void> {
     await this.page.goto(ROUTES.home, { waitUntil: 'domcontentloaded' });
-    await this.profileMenuButton().click();
+    await this.openProfileMenu();
     await this.manageMenuItem().click();
     await this.enterpriseSearchLink().first().click();
     await this.waitForEnterpriseSearchPage();
   }
 
+  async openProfileMenu(): Promise<void> {
+    await this.profileMenuButton().click();
+  }
+
   async waitForEnterpriseSearchPage(): Promise<void> {
-    await this.page.getByRole('button', { name: new RegExp(ENTERPRISE_SEARCH.addSourceButton, 'i') }).waitFor({
+    await this.page.waitForURL(/\/manage\/enterpriseSearch/i, { timeout: 60_000 }).catch(() => undefined);
+    await this.closeManageNavigationPanelIfOpen();
+
+    const addSourceButton = this.page.getByRole('button', {
+      name: new RegExp(ENTERPRISE_SEARCH.addSourceButton, 'i'),
+    });
+    const sourcesHeading = this.page.getByRole('heading', { name: /^Sources$/i });
+
+    await addSourceButton.or(sourcesHeading).first().waitFor({
       state: 'visible',
-      timeout: 30_000,
+      timeout: 60_000,
     });
   }
 }

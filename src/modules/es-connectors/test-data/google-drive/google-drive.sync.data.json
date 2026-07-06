@@ -1,0 +1,20 @@
+{
+  "statusTab": "Status",
+  "syncMenuButton": "Sync",
+  "syncOptionsMenuButton": "Open menu",
+  "syncType": "Start full sync",
+  "incrementalSyncType": "Start incremental sync (faster)",
+  "syncTypeShort": "Full",
+  "startSyncButton": "Start sync",
+  "resumeSyncButton": "Resume Sync",
+  "syncNotInitiatedStatus": "Sync not initiated",
+  "syncCompleteStatus": "Sync complete",
+  "flow": {
+    "enableShowInResults": "enable Show in results on Configuration tab",
+    "navigateToStatus": "navigate to Status tab",
+    "clickSyncDropdown": "click Sync down arrow to open menu",
+    "selectFullSync": "select Start full sync",
+    "clickStartSync": "click Start sync",
+    "waitForSyncComplete": "wait until sync completes successfully"
+  }
+}

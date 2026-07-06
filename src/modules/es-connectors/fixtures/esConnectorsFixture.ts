@@ -1,4 +1,5 @@
 import { test as base } from '@playwright/test';
+import { archiveTestVideo } from '@core/helpers/videoHelper';
 import { BasePage } from '@core/ui/pages/basePage';
 import { EnterpriseSearchNavigationPage } from '@es-connectors/ui/pages/enterpriseSearchNavigationPage';
 import { ESConnectorsAdminPanelPage } from '@es-connectors/ui/pages/esConnectorsAdminPanelPage';
@@ -6,6 +7,7 @@ import { ESConnectorConfigurationPage } from '@es-connectors/ui/components/conne
 import { ESConnectorsDropboxPage } from '@es-connectors/ui/pages/esConnectorsDropboxPage';
 import { ESConnectorsBoxPage } from '@es-connectors/ui/pages/esConnectorsBoxPage';
 import { ESConnectorsConfluencePage } from '@es-connectors/ui/pages/esConnectorsConfluencePage';
+import { ESConnectorsGoogleDrivePage } from '@es-connectors/ui/pages/esConnectorsGoogleDrivePage';
 
 type EsConnectorsFixtures = {
   basePage: BasePage;
@@ -15,6 +17,7 @@ type EsConnectorsFixtures = {
   esConnectorsDropbox: ESConnectorsDropboxPage;
   esConnectorsBox: ESConnectorsBoxPage;
   esConnectorsConfluence: ESConnectorsConfluencePage;
+  esConnectorsGoogleDrive: ESConnectorsGoogleDrivePage;
 };
 
 class ConcreteBasePage extends BasePage {
@@ -51,6 +54,17 @@ export const test = base.extend<EsConnectorsFixtures>({
   esConnectorsConfluence: async ({ page }, use) => {
     await use(new ESConnectorsConfluencePage(page));
   },
+
+  esConnectorsGoogleDrive: async ({ page }, use) => {
+    await use(new ESConnectorsGoogleDrivePage(page));
+  },
 });
 
 export { expect } from '@playwright/test';
+
+test.afterEach(async ({}, testInfo) => {
+  const archivedPath = await archiveTestVideo(testInfo);
+  if (archivedPath) {
+    console.log(`Archived test video: ${archivedPath}`);
+  }
+});
