@@ -1,8 +1,8 @@
 import { chromium, FullConfig } from '@playwright/test';
-import { environment } from '../src/config/environment';
-import { UserRole } from '../src/config/users';
-import { createAuthenticatedContext } from '../src/utils/auth.helper';
-import { logger } from '../src/utils/logger';
+import { environment } from '@core/config/environment';
+import { UserRole } from '@core/config/users';
+import { createAuthenticatedContext } from '@core/helpers/authHelper';
+import { logger } from '@core/utils/logger';
 
 const ROLES_TO_AUTHENTICATE: UserRole[] = ['endUser', 'appManager'];
 

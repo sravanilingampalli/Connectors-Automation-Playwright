@@ -1,0 +1,8 @@
+{
+  "connectorName": "test-confluence-connector",
+  "cloudEmail": "",
+  "apiToken": "",
+  "urlLabel": "",
+  "expirationDays": 90,
+  "requiredScopes": []
+}
